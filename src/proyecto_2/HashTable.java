@@ -8,13 +8,7 @@ package proyecto_2;
  *
  * @author Daniela
  */
-public class AVL {
-    Nodoavl raiz;
 
-    public AVL() {
-        this.raiz = null;
-    }
-    
-    
+public class HashTable {
     
 }
