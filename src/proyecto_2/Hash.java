@@ -1,14 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 package proyecto_2;
 
 /**
  *
  * @author Daniela
  */
+
 public class Hash {
 
     public Hash()
@@ -16,15 +17,18 @@ public class Hash {
         int hashcode;
     }
     
-    public int getHashCode(String Title)
+    public int getHashCode(String Value)
     {
-        char[] character = Title.toCharArray();
+        char[] character = Value.toCharArray();
         int hashcode = 0;
         for(int i=0; i<character.length; i++) 
         {
             hashcode += (int) character[i];
         }
-        return hashcode;
+        int newcode = hashcode % Value.length();
+        newcode += 2;
+        return newcode;
     }
     
 }
+
