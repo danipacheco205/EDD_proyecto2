@@ -5,10 +5,18 @@
  */
 package proyecto_2;
 
+import java.io.File;        
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Daniela
  */
+
 public class LoadDefault {
     
     public LoadDefault()
@@ -185,4 +193,212 @@ public class LoadDefault {
         Proyecto_2.AddProject(Title, Summary, Authors, Keys); 
         
     }
+    
+    public static void SaveData()
+    {                     
+        try 
+        { 
+            FileWriter w = new FileWriter(Proyecto_2.appfile);
+            w.close();
+        }
+        catch (IOException e) 
+        {
+            System.err.println("Error writing Data to file: " + e.getMessage());
+            e.printStackTrace();
+        }                
+        SaveDataArray("Proj_Tit");
+        SaveDataArray("Auth");
+        SaveDataArray("Key");
+        SaveDataArray("Proj_Sum");
+        SaveDataArray("Proj_Auth");
+        SaveDataArray("Proj_Key");
+        SaveDataArray("Auth_Proj");
+        SaveDataArray("Key_Proj");   
+    }
+    
+    static void SaveDataArray(String ArrData)
+    {
+        int Type = 0;
+        String[] Value_0 = new String[100];
+        int[][] Value_1 = new int[100][100];
+        
+        switch(ArrData)
+        {
+            case "Proj_Tit":
+                Type = 0;
+                Value_0 = Proyecto_2.Proj_Tit;
+                break;
+            case "Auth":
+                Type = 0;
+                Value_0 = Proyecto_2.Auth;
+                break;
+            case "Key":
+                Type = 0;
+                Value_0 = Proyecto_2.Key;
+                break;
+            case "Proj_Sum":
+                Type = 0;
+                Value_0 = Proyecto_2.Proj_Sum;
+                break;
+            case "Proj_Auth":
+                Type = 1;
+                Value_1 = Proyecto_2.Proj_Auth;
+                break;
+            case "Proj_Key":
+                Type = 1;
+                Value_1 = Proyecto_2.Proj_Key;
+                break;
+            case "Auth_Proj":
+                Type = 1;
+                Value_1 = Proyecto_2.Auth_Proj;
+                break;                
+            case "Key_Proj":
+                Type = 1;
+                Value_1 = Proyecto_2.Key_Proj;
+                break;
+            default:
+                System.err.println("Error writing Data to file.");
+                return;
+        }
+        
+        try 
+        { 
+            FileWriter w = new FileWriter(Proyecto_2.appfile, true);
+            BufferedWriter bw = new BufferedWriter(w);
+            String data = "DATA::" + ArrData;
+            bw.write(data);
+            bw.newLine();
+
+            if(Type == 0)
+            {
+                for(int i=0; i<Value_0.length; i++)
+                {
+                    if(Value_0[i]!=null)
+                    {
+                        data=i+"::"+Value_0[i];
+                        bw.write(data);
+                        bw.newLine();
+                    }
+                }
+            }
+            else
+            {
+                for(int i=0; i<Value_1.length; i++)
+                {
+                    if(Value_1[i][0]!=0)
+                    {
+                        data=i+"::";
+                        for(int j=0; j<Value_1[i].length; j++)
+                        {
+                            if(Value_1[i][j]!=0)
+                            {
+                                if(j>0) data+=",";
+                                data+=Value_1[i][j];
+                            }
+                            else break;
+                        }
+                        bw.write(data);
+                        bw.newLine();
+                    }
+                }
+            }
+            data = "END_DATA::" + ArrData;
+            bw.write(data);
+            bw.newLine();
+            System.out.println("Array " + ArrData + " successfully written to file.");                       
+            bw.close();
+            w.close();
+        } 
+        catch (IOException e) 
+        {
+            System.err.println("Error writing Data to file: " + e.getMessage());
+            e.printStackTrace();
+        }                                
+    }
+    
+    static void ReadAppFile()
+    {    
+        String line;
+        String ArrData = null;
+        Boolean flag = false;
+        try
+        {
+            FileReader r = new FileReader(Proyecto_2.appfile);
+            BufferedReader br = new BufferedReader(r);
+            while ((line = br.readLine()) != null)
+            {
+                String data[] = line.split("::");
+                if(data[0].equals("DATA") && flag == false)
+                {
+                    ArrData = data[1];
+                    flag = true;
+                }
+                else if(data[0].equals("END_DATA") && flag == true)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    int Index = Integer.parseInt(data[0]);
+                    SetDataArray(ArrData, Index, data[1]);
+                }
+            }
+            r.close();
+        }
+        catch (IOException e) 
+        {
+            System.err.println("Error Reading Data from file: " + e.getMessage());
+            e.printStackTrace();
+        }                                
+    }
+    
+    static void SetDataArray(String ArrData, int Index, String Value)
+    {
+        String val[] = new String[0];
+        switch(ArrData)
+        {
+            case "Proj_Tit":
+                Proyecto_2.Proj_Tit[Index] = Value;
+                break;
+            case "Auth":
+                Proyecto_2.Auth[Index] = Value;
+                break;
+            case "Key":
+                Proyecto_2.Key[Index] = Value;
+                break;
+            case "Proj_Sum":
+                Proyecto_2.Proj_Sum[Index] = Value;
+                break;
+            case "Proj_Auth":
+                val = Value.split(",");
+                for(int i=0;i<val.length;i++)
+                {
+                    Proyecto_2.Proj_Auth[Index][i] = Integer.parseInt(val[i]);
+                }
+                break;
+            case "Proj_Key":
+                val = Value.split(",");
+                for(int i=0;i<val.length;i++)
+                {
+                    Proyecto_2.Proj_Key[Index][i] = Integer.parseInt(val[i]);
+                }
+                break;
+            case "Auth_Proj":
+                val = Value.split(",");
+                for(int i=0;i<val.length;i++)
+                {
+                    Proyecto_2.Auth_Proj[Index][i] = Integer.parseInt(val[i]);
+                }
+                break;                
+            case "Key_Proj":
+                val = Value.split(",");
+                for(int i=0;i<val.length;i++)
+                {
+                    Proyecto_2.Key_Proj[Index][i] = Integer.parseInt(val[i]);
+                }
+                break;
+            default:
+                System.err.println("Error writing Data to file.");
+        }        
+    }    
 }

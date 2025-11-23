@@ -20,4 +20,36 @@ public class Nodoavl {
         this.noderc = null;
         this.nivel = 1;
     } 
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public Nodoavl getNodizq() {
+        return nodizq;
+    }
+
+    public void setNodizq(Nodoavl nodizq) {
+        this.nodizq = nodizq;
+    }
+
+    public Nodoavl getNoderc() {
+        return noderc;
+    }
+
+    public void setNoderc(Nodoavl noderc) {
+        this.noderc = noderc;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
 }

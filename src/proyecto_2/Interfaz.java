@@ -8,6 +8,10 @@ package proyecto_2;
  *
  * @author Daniela
  */
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JFileChooser;
+import java.io.File;
+
 public class Interfaz extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interfaz.class.getName());
@@ -35,9 +39,11 @@ public class Interfaz extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(230, 219, 232));
         jPanel1.setMaximumSize(new java.awt.Dimension(560, 380));
         jPanel1.setMinimumSize(new java.awt.Dimension(560, 380));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,15 +56,22 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel1.setText("SuperMetroMendeley");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 20)); // NOI18N
+        jLabel1.setText("Repositorio de resumenes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/Agregar.png"))); // NOI18N
         jButton1.setText("Agregar resumen");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 210, 70));
 
-        jButton3.setText("Analizar resumen");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
+        jButton3.setText("Ver lista de palabras claves");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         jButton4.setText("Buscar resumen por palabra clave");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -76,6 +89,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+
+        jButton6.setText("Analizar resumen");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,6 +120,20 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter txtonly = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        jfc.setFileFilter(txtonly);
+        jfc.setAcceptAllFileFilterUsed(false);
+        int returnValue = jfc.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) 
+        {
+            File selectedFile = jfc.getSelectedFile();
+	}
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +166,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

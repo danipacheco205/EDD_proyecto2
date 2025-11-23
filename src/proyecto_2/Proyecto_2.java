@@ -5,9 +5,6 @@
 package proyecto_2;
 
 import java.io.File;        
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.BufferedReader;
 
 /**
  *
@@ -16,7 +13,7 @@ import java.io.BufferedReader;
 public class Proyecto_2 {
 
     
-    public static String strappfile = System.getProperty("java.io.tmpdir") + "hash.txt";
+    public static String strappfile = System.getProperty("java.io.tmpdir") + "proyecto_2.txt";
     public static File appfile = new File(strappfile);
     public static Proyecto_2 inicio = new Proyecto_2();
     public static String[] Proj_Tit = new String[100];
@@ -32,10 +29,20 @@ public class Proyecto_2 {
     
     public static void main(String[] args) {
         // TODO code application logic here
+        if(appfile.exists())
+        {
+            LoadDefault.ReadAppFile();
+        }
+        else
+        {
+            LoadDefault.DefaultsProjects();
+            LoadDefault.SaveData();
+        }    
         Interfaz interf = new Interfaz();
         interf.setVisible(true);
-        LoadDefault.DefaultsProjects();
-        print_array_i2(Proj_Auth);
+        print_array_s1(Proj_Tit);
+        print_array_s1(Key);
+        print_array_i2(Proj_Key);
     }
         
           
@@ -161,6 +168,7 @@ public class Proyecto_2 {
                 break;
             case "Key":
                 Value = Key;
+                break;
             default:
                 Value = Proj_Tit;
         }
