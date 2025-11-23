@@ -39,7 +39,6 @@ public class AVL {
         this.coll = coll;
     }
     
-    
     public void insertroot(String word)
     {
         Nodoavl root = this.getRaiz();
@@ -82,4 +81,32 @@ public class AVL {
             }
         }
     }
+    
+    public boolean existe(Nodoavl raiz, String info)
+    {
+        if (raiz == null)
+        {
+            return false;
+        }
+        
+        int comparar = coll.compare(info, raiz.getInfo());
+        
+        if (comparar == 0)
+        {
+            return true;
+        }
+        else
+        {
+            if (comparar < 0)
+            {
+                return existe(raiz.getNodizq(), info);
+            }
+            else
+            {
+                return existe(raiz.getNoderc(), info);
+            }
+        }
+    }
+    
+    
 }
