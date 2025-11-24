@@ -4,7 +4,8 @@
  */
 package proyecto_2;
 
-import java.io.File;        
+import java.io.File;
+import java.text.Collator;
 
 /**
  *
@@ -40,9 +41,9 @@ public class Proyecto_2 {
         }    
         Interfaz interf = new Interfaz();
         interf.setVisible(true);
-        print_array_s1(Proj_Tit);
-        print_array_s1(Key);
-        print_array_i2(Proj_Key);
+        //print_array_s1(Proj_Tit);
+        //print_array_s1(Key);
+        //print_array_i2(Proj_Key);
     }
         
           
@@ -150,6 +151,7 @@ public class Proyecto_2 {
                     }
                 }
             }
+            flag = true;
         }
         return flag;
     }
@@ -214,6 +216,46 @@ public class Proyecto_2 {
                 System.out.println(pv);
             }
         }
+    }
+    
+    public static String[] OrderStringArray(String[] DataArray)
+    {
+        String[] Result = new String[1];
+        Result[0] = DataArray[0];
+        int index = -1;
+        Collator col = Collator.getInstance();
+        for(int i=1; i<DataArray.length; i++)
+        {
+            String[] tmpResult = new String[Result.length + 1];
+            index = -1;
+            for(int j=0; j<Result.length; j++)
+            {
+                int comp = col.compare(Result[j], DataArray[i]);
+                if(comp >= 0)
+                {
+                    index = j;
+                    tmpResult[j] = DataArray[i];
+                    break;
+                }
+                else
+                {
+                    tmpResult[j] = Result[j];
+                }
+            }
+            if(index == -1)
+            {
+                tmpResult[tmpResult.length - 1] = DataArray[i];
+            }
+            else
+            {
+                for(int k=index; k<Result.length; k++)
+                {
+                    tmpResult[k+1] = Result[k];
+                }
+            }
+            Result = tmpResult;
+        }
+        return Result;
     }
     
 }

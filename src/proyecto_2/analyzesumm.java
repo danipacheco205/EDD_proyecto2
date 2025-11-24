@@ -38,6 +38,7 @@ public class analyzesumm extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(536, 375));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textansumm.setEditable(false);
@@ -104,6 +105,7 @@ public class analyzesumm extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new analyzesumm().setVisible(true));

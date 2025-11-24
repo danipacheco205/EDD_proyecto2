@@ -12,13 +12,13 @@ public class Nodoavl {
     private String info;
     private Nodoavl nodizq;
     private Nodoavl noderc;
-    private int nivel;
+    private int altura;
 
     public Nodoavl(String info) {
         this.info = info;
         this.nodizq = null;
         this.noderc = null;
-        this.nivel = 1;
+        this.altura = 1;
     } 
 
     public String getInfo() {
@@ -45,11 +45,11 @@ public class Nodoavl {
         this.noderc = noderc;
     }
 
-    public int getNivel() {
-        return nivel;
+    public int getAltura() {
+        return altura;
     }
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    public void setAltura(int altura) {
+        this.altura = altura;
     }
 }

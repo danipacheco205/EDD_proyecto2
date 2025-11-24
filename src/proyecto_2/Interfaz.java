@@ -11,6 +11,7 @@ package proyecto_2;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFileChooser;
 import java.io.File;
+import javax.swing.JOptionPane;
 
 public class Interfaz extends javax.swing.JFrame {
     
@@ -33,65 +34,95 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnAnalizar = new javax.swing.JButton();
+        btnBuscaClave = new javax.swing.JButton();
+        btinBuscaAutor = new javax.swing.JButton();
+        btinBuscaAutor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(230, 219, 232));
-        jPanel1.setMaximumSize(new java.awt.Dimension(560, 380));
-        jPanel1.setMinimumSize(new java.awt.Dimension(560, 380));
+        jPanel1.setBackground(new java.awt.Color(225, 213, 225));
+        jPanel1.setMaximumSize(new java.awt.Dimension(650, 373));
+        jPanel1.setMinimumSize(new java.awt.Dimension(650, 373));
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 373));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setMaximumSize(new java.awt.Dimension(145, 83));
+        btnSalir.setMinimumSize(new java.awt.Dimension(145, 83));
+        btnSalir.setPreferredSize(new java.awt.Dimension(145, 83));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 20)); // NOI18N
         jLabel1.setText("Repositorio de resumenes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/Agregar.png"))); // NOI18N
-        jButton1.setText("Agregar resumen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/Agregar.png"))); // NOI18N
+        btnAgregar.setText("Agregar resumen");
+        btnAgregar.setPreferredSize(new java.awt.Dimension(290, 83));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 210, 70));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jButton3.setText("Ver lista de palabras claves");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
-
-        jButton4.setText("Buscar resumen por palabra clave");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAnalizar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAnalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/Analizar.png"))); // NOI18N
+        btnAnalizar.setText("Analizar resumen");
+        btnAnalizar.setPreferredSize(new java.awt.Dimension(290, 83));
+        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAnalizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 230, 30));
+        jPanel1.add(btnAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
-        jButton5.setText("Buscar resumen por autor");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscaClave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnBuscaClave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/BuscaClave.png"))); // NOI18N
+        btnBuscaClave.setText("Buscar resumen por palabra clave");
+        btnBuscaClave.setMaximumSize(new java.awt.Dimension(290, 83));
+        btnBuscaClave.setMinimumSize(new java.awt.Dimension(290, 83));
+        btnBuscaClave.setPreferredSize(new java.awt.Dimension(290, 83));
+        btnBuscaClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBuscaClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+        jPanel1.add(btnBuscaClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
 
-        jButton6.setText("Analizar resumen");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        btinBuscaAutor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btinBuscaAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/BuscaAutor.png"))); // NOI18N
+        btinBuscaAutor.setText("Buscar resumen por autor");
+        btinBuscaAutor.setPreferredSize(new java.awt.Dimension(290, 83));
+        btinBuscaAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btinBuscaAutorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btinBuscaAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        btinBuscaAutor1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btinBuscaAutor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_2/ListarClaves.png"))); // NOI18N
+        btinBuscaAutor1.setText("Lista de palabras clave");
+        btinBuscaAutor1.setPreferredSize(new java.awt.Dimension(290, 83));
+        btinBuscaAutor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btinBuscaAutor1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btinBuscaAutor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,20 +139,23 @@ public class Interfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnBuscaClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaClaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        dlgsearchword buscarpal = new dlgsearchword(this, true);
+        buscarpal.fillallkey();
+        buscarpal.setVisible(true);
+    }//GEN-LAST:event_btnBuscaClaveActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btinBuscaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinBuscaAutorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btinBuscaAutorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter txtonly = new FileNameExtensionFilter("Archivos de Texto", "txt");
@@ -131,9 +165,29 @@ public class Interfaz extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) 
         {
             File selectedFile = jfc.getSelectedFile();
-	}
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+            Boolean FileLoaded = LoadDefault.LoadSummary(selectedFile);
+            if(FileLoaded)
+            {
+                LoadDefault.SaveData();
+                JOptionPane.showMessageDialog(null, "El resumen ha sido agregado exitosamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Formato del archivo inválido o Resumen ya agregado", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btinBuscaAutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinBuscaAutor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btinBuscaAutor1ActionPerformed
+
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
+        // TODO add your handling code here:
+        dlganalyzesumm selresum = new dlganalyzesumm(this, true);
+        selresum.fillallsum();
+        selresum.setVisible(true);
+    }//GEN-LAST:event_btnAnalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,12 +215,12 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btinBuscaAutor;
+    private javax.swing.JButton btinBuscaAutor1;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAnalizar;
+    private javax.swing.JButton btnBuscaClave;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

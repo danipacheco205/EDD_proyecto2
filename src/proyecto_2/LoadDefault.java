@@ -343,6 +343,7 @@ public class LoadDefault {
                     SetDataArray(ArrData, Index, data[1]);
                 }
             }
+            br.close();
             r.close();
         }
         catch (IOException e) 
@@ -400,5 +401,95 @@ public class LoadDefault {
             default:
                 System.err.println("Error writing Data to file.");
         }        
-    }    
+    }
+
+    public static Boolean LoadSummary(File ProjFile)
+    {
+        String line;
+        String Title = null;
+        String Summary = null;
+        String[] Authors = new String[0];
+        String[] Keys = new String[0];
+        Boolean flagTitle = false;
+        Boolean flagSummary = false;
+        Boolean flagAuthors = false;
+        Boolean flagKeys = false;
+        Boolean flagSuccess = false;
+        String LastInfo = "";
+        
+        try
+        {
+            FileReader r = new FileReader(ProjFile);
+            BufferedReader br = new BufferedReader(r);
+            while ((line = br.readLine()) != null)
+            {
+                if(!flagTitle)
+                {
+                    if("autores".equals(line.toLowerCase()))
+                    {
+                        Title = LastInfo;
+                        flagTitle = true;
+                        LastInfo = "";
+                    }
+                    else LastInfo += line.trim();
+                }
+                else 
+                {
+                    if(!flagAuthors)
+                    {
+                        if("resumen".equals(line.toLowerCase()))
+                        {
+                            Authors = LastInfo.split(",");
+                            flagAuthors = true;
+                            LastInfo = "";
+                        }
+                        else
+                        {
+                            System.out.println(LastInfo.length());
+                            if(LastInfo.length()>0)
+                            {
+                                LastInfo += ",";
+                            }
+                            LastInfo += line.trim();
+                        }
+                    }
+                    else
+                    {
+                        if(!flagSummary)
+                        {
+                            if(line.toLowerCase().contains("palabras claves:"))
+                            {
+                                Summary = LastInfo;
+                                flagSummary = true;
+                                LastInfo = line.substring(15).trim();
+                                LastInfo = LastInfo.replace(".", "");
+                                LastInfo = LastInfo.replace(";", ",");
+                                LastInfo = LastInfo.replace(", ", ",");
+                                Keys = LastInfo.split(",");
+                                flagKeys = true;
+                            }
+                            else
+                            {
+                                LastInfo += line.trim();
+                            }
+                        }
+                    }
+                }
+            }
+            br.close();
+            r.close();
+        }
+        catch (IOException e) 
+        {
+            System.err.println("Error Reading Data from file: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        if(flagTitle && flagAuthors && flagSummary && flagKeys)
+        {
+            flagSuccess = Proyecto_2.AddProject(Title, Summary, Authors, Keys);
+        }
+                
+        return flagSuccess;
+    }
 }
