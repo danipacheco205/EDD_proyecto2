@@ -67,7 +67,8 @@ public class dlgsearchword extends javax.swing.JDialog {
         jLabel2.setText("Buscar por palabra clave");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
-        btaccept.setText("Aceptar");
+        btaccept.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btaccept.setText("Detalles");
         btaccept.setMaximumSize(new java.awt.Dimension(76, 29));
         btaccept.setMinimumSize(new java.awt.Dimension(76, 29));
         btaccept.setPreferredSize(new java.awt.Dimension(76, 29));
@@ -78,6 +79,7 @@ public class dlgsearchword extends javax.swing.JDialog {
         });
         jPanel1.add(btaccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 90, 30));
 
+        btcancel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btcancel.setText("Cancelar");
         btcancel.setMaximumSize(new java.awt.Dimension(76, 29));
         btcancel.setMinimumSize(new java.awt.Dimension(76, 29));
@@ -88,9 +90,6 @@ public class dlgsearchword extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 90, 30));
-
-        list1.setMinimumSize(new java.awt.Dimension(72, 80));
-        list1.setPreferredSize(new java.awt.Dimension(72, 80));
         jPanel1.add(list1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 470, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,37 +118,7 @@ public class dlgsearchword extends javax.swing.JDialog {
             this.dispose();
             analyzesumm ansumm = new analyzesumm();
             String SummSel = this.list1.getSelectedItem().toString();
-            Hash Obj = new Hash();
-            int hashproj = Obj.getHashCode(SummSel);
-            String SummText;
-            SummText = SummSel+"\r\n\r\n";
-            SummText += "Autores\r\n";
-            for(int i=0; i<Proyecto_2.Proj_Auth[hashproj].length; i++)
-            {
-                if(Proyecto_2.Proj_Auth[hashproj][i]!=0)
-                {
-                    int hashauth = Proyecto_2.Proj_Auth[hashproj][i];
-                    SummText += Proyecto_2.Auth[hashauth] + "\r\n";
-                }
-                else break;
-            }
-            SummText += "\r\nResumen\r\n";
-            SummText += Proyecto_2.Proj_Sum[hashproj]+"\r\n";
-            SummText += "\r\nPalabras claves: ";
-            for(int i=0; i<Proyecto_2.Proj_Key[hashproj].length; i++)
-            {
-                if(Proyecto_2.Proj_Key[hashproj][i]!=0)
-                {
-                    int hashkey = Proyecto_2.Proj_Key[hashproj][i];
-                    if(i>0)
-                    {
-                        SummText += ", ";
-                    }
-                    SummText += Proyecto_2.Key[hashkey].trim();
-                }
-                else break;
-            }
-            ansumm.textansumm.setText(SummText);
+            ansumm.fillTextArea(SummSel);
             ansumm.setVisible(true);
         }
     }//GEN-LAST:event_btacceptActionPerformed
@@ -181,8 +150,6 @@ public class dlgsearchword extends javax.swing.JDialog {
                 
             }
         }
-        
-
     }//GEN-LAST:event_keywordselItemStateChanged
 
     /**
@@ -234,7 +201,7 @@ public class dlgsearchword extends javax.swing.JDialog {
         String[] tmpKey = new String[0];
         this.keywordsel.removeAllItems();
         this.keywordsel.addItem("--Seleccionar--");
-        for(int i=0; i<Proyecto_2.Key_Proj.length;i++)
+        for(int i=0; i<Proyecto_2.Key.length;i++)
         {
             if(Proyecto_2.Key[i]!=null)
             {

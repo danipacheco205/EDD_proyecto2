@@ -33,27 +33,34 @@ public class analyzesumm extends javax.swing.JFrame {
         textansumm = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textresult = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Análisis de resumen");
         setMinimumSize(new java.awt.Dimension(536, 375));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 550));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textansumm.setEditable(false);
-        textansumm.setBackground(new java.awt.Color(255, 255, 255));
         textansumm.setColumns(20);
         textansumm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textansumm.setLineWrap(true);
         textansumm.setRows(5);
+        textansumm.setWrapStyleWord(true);
         jScrollPane1.setViewportView(textansumm);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 490, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 690, 380));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Resumen");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jLabel2.setAlignmentX(0.5F);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 690, -1));
 
         jButton1.setText("Cerrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,18 +68,28 @@ public class analyzesumm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 507, -1, -1));
+
+        textresult.setEditable(false);
+        textresult.setColumns(20);
+        textresult.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textresult.setLineWrap(true);
+        textresult.setRows(5);
+        textresult.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(textresult);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 620, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -105,17 +122,82 @@ public class analyzesumm extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+                
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new analyzesumm().setVisible(true));
     }
 
+    public void fillTextArea(String SummSel)
+    {
+            Hash Obj = new Hash();
+            int hashproj = Obj.getHashCode(SummSel);
+            String SummText;
+            String SummResult = "Resultado de Analisis:\r\n";
+            SummText = SummSel+"\r\n\r\n";
+            SummText += "Autores\r\n";
+            for(int i=0; i<Proyecto_2.Proj_Auth[hashproj].length; i++)
+            {
+                if(Proyecto_2.Proj_Auth[hashproj][i]!=0)
+                {
+                    int hashauth = Proyecto_2.Proj_Auth[hashproj][i];
+                    SummText += Proyecto_2.Auth[hashauth] + "\r\n";
+                }
+                else break;
+            }
+            SummText += "\r\nResumen\r\n";
+            SummText += Proyecto_2.Proj_Sum[hashproj]+"\r\n";
+            SummText += "\r\nPalabras claves: ";
+            for(int i=0; i<Proyecto_2.Proj_Key[hashproj].length; i++)
+            {
+                if(Proyecto_2.Proj_Key[hashproj][i]!=0)
+                {
+                    int hashkey = Proyecto_2.Proj_Key[hashproj][i];
+                    if(i>0)
+                    {
+                        SummText += ", ";
+                    }
+                    String currKey = Proyecto_2.Key[hashkey].trim();
+                    SummText += currKey;
+                    int count = 0;
+                    int lastIndex = 0;
+                    Boolean StopCount = false;
+                    while(!StopCount)
+                    {
+                        int currIndex = Proyecto_2.Proj_Sum[hashproj].toLowerCase().indexOf(currKey.toLowerCase(), lastIndex);
+                        if(currIndex == -1)
+                        {
+                            StopCount = true;
+                        }
+                        else
+                        {
+                            count++;
+                            lastIndex = currIndex + 1;
+                        }
+                    }
+                    String countTxt;
+                    if(count == 1) countTxt = "vez"; else countTxt = "veces";
+                    SummResult += currKey +", aparece "+count+" "+countTxt+".\r\n";
+                }
+                else break;
+            }
+            this.textansumm.setText(SummText);
+            this.textansumm.setSelectionStart(0);
+            this.textansumm.setSelectionEnd(0);
+            
+            this.textresult.setText(SummResult);
+            this.textresult.setSelectionStart(0);
+            this.textresult.setSelectionEnd(0);
+            
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextArea textansumm;
+    public javax.swing.JTextArea textresult;
     // End of variables declaration//GEN-END:variables
 }

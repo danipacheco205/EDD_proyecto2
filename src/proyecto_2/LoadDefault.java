@@ -461,7 +461,7 @@ public class LoadDefault {
                             {
                                 Summary = LastInfo;
                                 flagSummary = true;
-                                LastInfo = line.substring(15).trim();
+                                LastInfo = line.substring(16).trim();
                                 LastInfo = LastInfo.replace(".", "");
                                 LastInfo = LastInfo.replace(";", ",");
                                 LastInfo = LastInfo.replace(", ", ",");

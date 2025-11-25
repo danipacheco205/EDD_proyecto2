@@ -39,6 +39,7 @@ public class dlganalyzesumm extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Analizar de resumen");
         setMinimumSize(new java.awt.Dimension(470, 212));
         setResizable(false);
 
@@ -106,12 +107,14 @@ public class dlganalyzesumm extends javax.swing.JDialog {
     String seluser = this.summsel.getSelectedItem().toString();
     if (seluser.equals("--Seleccionar--"))
     {   
-        JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario a eliminar.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Debe seleccionar el resumen a analizar.", "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     else  
     {
         this.dispose();
         analyzesumm ansumm = new analyzesumm();
+        String SummSel = this.summsel.getSelectedItem().toString();
+        ansumm.fillTextArea(SummSel);
         ansumm.setVisible(true);
     }
     }//GEN-LAST:event_btacceptActionPerformed
@@ -161,8 +164,28 @@ public class dlganalyzesumm extends javax.swing.JDialog {
         * Modifica al ComboBox(deluser1) para que solo estén los usuarios del arreglo users
         * Itera sobre todos los usuarios (nodos) del arreglo users y los agrega al ComboBox(deluser1)
         */
+        String[] addSumm = new String[0];
+        String[] tmpSumm = new String[0];
         this.summsel.removeAllItems();
         this.summsel.addItem("--Seleccionar--");
+        for(int i=0; i<Proyecto_2.Proj_Tit.length;i++)
+        {
+            if(Proyecto_2.Proj_Tit[i]!=null)
+            {
+                tmpSumm = new String[addSumm.length + 1];
+                for(int j=0; j<addSumm.length;j++)
+                {
+                    tmpSumm[j] = addSumm[j];
+                }
+                tmpSumm[tmpSumm.length - 1] = Proyecto_2.Proj_Tit[i];
+                addSumm = tmpSumm;
+            }  
+        }
+        tmpSumm = Proyecto_2.OrderStringArray(addSumm);
+        for(int i=0; i<tmpSumm.length; i++)
+        {
+            this.summsel.addItem(tmpSumm[i]);
+        }
         
     }
     
