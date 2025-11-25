@@ -3,4 +3,5 @@ Se desarrolló un programa que administra hasta 100 artículos científicos guar
 
 
 Daniela Pacheco
+
 Repositorio: https://github.com/danipacheco205/EDD_proyecto2
