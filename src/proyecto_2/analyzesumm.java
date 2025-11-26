@@ -68,7 +68,7 @@ public class analyzesumm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 507, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
         textresult.setEditable(false);
         textresult.setColumns(20);
@@ -188,7 +188,6 @@ public class analyzesumm extends javax.swing.JFrame {
             this.textresult.setText(SummResult);
             this.textresult.setSelectionStart(0);
             this.textresult.setSelectionEnd(0);
-            
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -44,7 +44,6 @@ public class Proyecto_2 {
         }
         fillarbol("Author");
         fillarbol("Key");
-        
         interf.setVisible(true);
     }
         
