@@ -133,7 +133,7 @@ public class analyzesumm extends javax.swing.JFrame {
             Hash Obj = new Hash();
             int hashproj = Obj.getHashCode(SummSel);
             String SummText;
-            String SummResult = "Resultado de Analisis:\r\n";
+            String SummResult = "Resultado de Analisis (frecuencia):\r\n";
             SummText = SummSel+"\r\n\r\n";
             SummText += "Autores\r\n";
             for(int i=0; i<Proyecto_2.Proj_Auth[hashproj].length; i++)

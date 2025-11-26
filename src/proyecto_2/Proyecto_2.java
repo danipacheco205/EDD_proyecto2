@@ -13,10 +13,11 @@ import java.text.Collator;
  */
 public class Proyecto_2 {
 
-    
+    /**
+     * Instancias públicas de la clase
+     */
     public static String strappfile = System.getProperty("java.io.tmpdir") + "proyecto_2.txt";
     public static File appfile = new File(strappfile);
-    public static Proyecto_2 inicio = new Proyecto_2();
     public static String[] Proj_Tit = new String[100];
     public static String[] Proj_Sum = new String[100];
     public static String[] Auth = new String[100];
@@ -25,7 +26,9 @@ public class Proyecto_2 {
     public static int[][] Proj_Key = new int [100][100];
     public static int[][] Auth_Proj = new int [100][100];
     public static int[][] Key_Proj = new int [100][100];
-    
+    public static AVL arb_author = new AVL();
+    public static AVL arb_keywords = new AVL();    
+    public static Interfaz interf = new Interfaz();
     
     
     public static void main(String[] args) {
@@ -38,17 +41,19 @@ public class Proyecto_2 {
         {
             LoadDefault.DefaultsProjects();
             LoadDefault.SaveData();
-        }    
-        Interfaz interf = new Interfaz();
+        }
+        fillarbol("Author");
+        fillarbol("Key");
+        
         interf.setVisible(true);
-        //print_array_s1(Proj_Tit);
-        //print_array_s1(Key);
-        //print_array_i2(Proj_Key);
     }
         
           
     public static Boolean AddProject(String Title, String Summary, String[] Authors, String[] Keys)
     {
+        /**
+         * Agrega la investigación almacenando la información en los arreglos
+         */
         Boolean flag = false;
         Boolean flag_continue = false;
         int HashProj;
@@ -96,6 +101,7 @@ public class Proyecto_2 {
                         Auth[HashAuthor] = Author;
                     }
                 }
+                arb_author.insertroot(Author);
                 for(int i=0; i<Proj_Auth[HashProj].length; i++)
                 {
                     if(Proj_Auth[HashProj][i] == 0)
@@ -134,6 +140,7 @@ public class Proyecto_2 {
                         Key[HashKey] = KeyV;
                     }
                 }
+                arb_keywords.insertroot(KeyV);
                 for(int i=0; i<Proj_Key[HashProj].length; i++)
                 {
                     if(Proj_Key[HashProj][i] == 0)
@@ -158,6 +165,9 @@ public class Proyecto_2 {
         
     public static Boolean isHashEmpty(int Code, String Type)
     {
+        /**
+         * Verifica si el indice está ocupado
+         */
         boolean flagEmpty;
         String[] Value;
         switch(Type)
@@ -186,40 +196,11 @@ public class Proyecto_2 {
         return flagEmpty;
     }
 
-    public static void print_array_s1(String[] arr)
-    {
-        for(int i=0;i<arr.length;i++)
-        {
-            if(arr[i] != null)
-            {
-                System.out.println("["+i+"] "+arr[i]);
-            }
-        }
-    }
-
-    public static void print_array_i2(int[][] arr)
-    {
-        for(int i=0;i<arr.length;i++)
-        {
-            if(arr[i][0] != 0)
-            {
-                String pv = null;
-                pv = "["+i+"] ";                
-                for(int j=0;j<arr[i].length;j++)
-                {
-                    if(arr[i][j] != 0)
-                    {
-                        pv += "["+j+"] " + arr[i][j]+" ";
-                    }
-                    else break;
-                }
-                System.out.println(pv);
-            }
-        }
-    }
-    
     public static String[] OrderStringArray(String[] DataArray)
     {
+        /**
+         * Ordena el arreglo de forma alfabética
+         */
         String[] Result = new String[1];
         Result[0] = DataArray[0];
         int index = -1;
@@ -258,4 +239,36 @@ public class Proyecto_2 {
         return Result;
     }
     
+    private static void fillarbol(String Type)
+    {
+        /**
+         * 
+         */
+        String[] Value;
+        switch(Type)
+        {
+            case "Author":
+                Value = Auth;
+                break;
+            case "Key":
+                Value = Key;
+                break;
+            default:
+                Value = Auth;
+        }
+        for(int i=0; i<Value.length; i++)
+        {
+            if(Value[i]!=null)
+            {
+                if(Type.equals("Author"))
+                {
+                    arb_author.insertroot(Value[i]);
+                }
+                else
+                {
+                    arb_keywords.insertroot(Value[i]);
+                }    
+            }
+        }
+    }
 }

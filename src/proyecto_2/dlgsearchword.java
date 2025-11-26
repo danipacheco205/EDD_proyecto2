@@ -40,7 +40,7 @@ public class dlgsearchword extends javax.swing.JDialog {
         list1 = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(491, 236));
+        setTitle("buscar por palabra clave");
         setMinimumSize(new java.awt.Dimension(491, 236));
         setResizable(false);
 
@@ -65,7 +65,7 @@ public class dlgsearchword extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setText("Buscar por palabra clave");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         btaccept.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btaccept.setText("Detalles");
@@ -90,7 +90,13 @@ public class dlgsearchword extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 90, 30));
-        jPanel1.add(list1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 470, -1));
+
+        list1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                list1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(list1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 470, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +106,7 @@ public class dlgsearchword extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
         );
 
         pack();
@@ -152,6 +158,10 @@ public class dlgsearchword extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_keywordselItemStateChanged
 
+    private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_list1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,10 +202,8 @@ public class dlgsearchword extends javax.swing.JDialog {
     public void fillallkey()
     {
         /**
-        * Elimina todos los items de la lista de selección o ComboBox(deluser1)
-        * Agrega un item al ComboBox(deluser1) llamado "--Seleccionar--" que indica que es estrictamente necesario seleccionar un usuario
-        * Modifica al ComboBox(deluser1) para que solo estén los usuarios del arreglo users
-        * Itera sobre todos los usuarios (nodos) del arreglo users y los agrega al ComboBox(deluser1)
+        * Agrega cada palabra clave ordenada alfabeticamente al combo box (keywordsel) incluyendo un item llamado seleccionar
+        * Otra forma de ordenar el combobox sin utilizar un arbol AVL
         */
         String[] addKey = new String[0];
         String[] tmpKey = new String[0];

@@ -14,11 +14,17 @@ public class Hash {
 
     public Hash()
     {
+        /**
+         * Constructor de la clase
+         */
         int hashcode;
     }
     
     public int getHashCode(String Value)
     {
+        /**
+         * Calcula el indice del String para ser añadido al arreglo 
+         */
         char[] character = Value.toCharArray();
         int hashcode = 0;
         for(int i=0; i<character.length; i++) 

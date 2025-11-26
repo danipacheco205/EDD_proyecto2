@@ -8,13 +8,17 @@ package proyecto_2;
  *
  * @author Daniela
  */
-public class Nodoavl {
+public class Nodoavl
+{
     private String info;
     private Nodoavl nodizq;
     private Nodoavl noderc;
     private int altura;
 
     public Nodoavl(String info) {
+        /**
+         * Constructor
+         */
         this.info = info;
         this.nodizq = null;
         this.noderc = null;

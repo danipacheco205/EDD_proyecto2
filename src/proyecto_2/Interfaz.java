@@ -43,6 +43,7 @@ public class Interfaz extends javax.swing.JFrame {
         btinBuscaAutor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("repositorio de resumenes");
 
         jPanel1.setBackground(new java.awt.Color(225, 213, 225));
         jPanel1.setMaximumSize(new java.awt.Dimension(650, 373));
@@ -128,7 +129,7 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,6 +154,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btinBuscaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinBuscaAutorActionPerformed
         // TODO add your handling code here:
+        dlgauthor dlautor = new dlgauthor(this, true);
+        dlautor.fillallauthor();
+        dlautor.setVisible(true);
     }//GEN-LAST:event_btinBuscaAutorActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -180,6 +184,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btinBuscaAutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinBuscaAutor1ActionPerformed
         // TODO add your handling code here:
+        dlgkeyword dlpalcla = new dlgkeyword(this, true);
+        dlpalcla.filleachkey();
+        dlpalcla.setVisible(true);
     }//GEN-LAST:event_btinBuscaAutor1ActionPerformed
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed

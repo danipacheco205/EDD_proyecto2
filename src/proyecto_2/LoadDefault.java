@@ -26,6 +26,9 @@ public class LoadDefault {
     
     public static void DefaultsProjects()
     {
+        /**
+         * Carga estas investigaciones cuando no existe el archivo de aplicación
+         */
         String Title;
         String[] Authors;
         String Summary;
@@ -189,13 +192,16 @@ public class LoadDefault {
         Summary += "de prueba. Adicionalmente, se especifica un patrón de implementación en CUDA que aprovecha ";
         Summary += "la capacidad de paralelismo inherente de los autómatas celulares y un método para la selección ";
         Summary += "no supervisada de la configuración inicial del autómata.";
-        Keys = new String[] {"Autómata Celular", "Procesamiento de Imágenes", "Segmentación, GPU"};
+        Keys = new String[] {"Autómata Celular", "Procesamiento de Imágenes", "Segmentación", "GPU"};
         Proyecto_2.AddProject(Title, Summary, Authors, Keys); 
         
     }
     
     public static void SaveData()
     {                     
+        /**
+         * Guarda toda la información en el archivo de aplicación
+         */
         try 
         { 
             FileWriter w = new FileWriter(Proyecto_2.appfile);
@@ -218,6 +224,9 @@ public class LoadDefault {
     
     static void SaveDataArray(String ArrData)
     {
+        /**
+         * Guarda la información de un arreglo en el archivo de memoria de aplicación
+         */
         int Type = 0;
         String[] Value_0 = new String[100];
         int[][] Value_1 = new int[100][100];
@@ -318,6 +327,9 @@ public class LoadDefault {
     
     static void ReadAppFile()
     {    
+        /**
+         * Lee el archivo de la memoria y ejecuta el SaveDataArray para llenar los arreglos
+         */
         String line;
         String ArrData = null;
         Boolean flag = false;
@@ -355,6 +367,9 @@ public class LoadDefault {
     
     static void SetDataArray(String ArrData, int Index, String Value)
     {
+        /**
+         * LLena los arreglos de proyecto, autores y claves
+         */
         String val[] = new String[0];
         switch(ArrData)
         {
@@ -405,6 +420,9 @@ public class LoadDefault {
 
     public static Boolean LoadSummary(File ProjFile)
     {
+        /**
+         * función que carga un nuevo resumen desde un archivo de texto
+         */
         String line;
         String Title = null;
         String Summary = null;

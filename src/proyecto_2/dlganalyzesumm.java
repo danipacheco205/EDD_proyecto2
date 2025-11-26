@@ -80,7 +80,7 @@ public class dlganalyzesumm extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setText("Analizar resumen");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,7 +107,7 @@ public class dlganalyzesumm extends javax.swing.JDialog {
     String seluser = this.summsel.getSelectedItem().toString();
     if (seluser.equals("--Seleccionar--"))
     {   
-        JOptionPane.showMessageDialog(null, "Debe seleccionar el resumen a analizar.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Debe seleccionar el resumen que desea analizar.", "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     else  
     {
