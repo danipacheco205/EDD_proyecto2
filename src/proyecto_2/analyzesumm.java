@@ -32,7 +32,7 @@ public class analyzesumm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textansumm = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        closebt = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         textresult = new javax.swing.JTextArea();
 
@@ -62,13 +62,13 @@ public class analyzesumm extends javax.swing.JFrame {
         jLabel2.setAlignmentX(0.5F);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 690, -1));
 
-        jButton1.setText("Cerrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        closebt.setText("Cerrar");
+        closebt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                closebtActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
+        jPanel1.add(closebt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
         textresult.setEditable(false);
         textresult.setColumns(20);
@@ -97,10 +97,10 @@ public class analyzesumm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void closebtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closebtActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_closebtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +191,7 @@ public class analyzesumm extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton closebt;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

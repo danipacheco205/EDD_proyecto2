@@ -12,6 +12,8 @@ package proyecto_2;
 
 public class Hash {
 
+    private int hashcode;
+    
     public Hash()
     {
         /**

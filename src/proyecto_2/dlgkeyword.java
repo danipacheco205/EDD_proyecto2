@@ -132,8 +132,8 @@ public class dlgkeyword extends javax.swing.JDialog {
             anword.keywordsel.setEnabled(false);
             anword.keywordsel.removeAllItems();
             anword.keywordsel.addItem(this.listkey.getSelectedItem());
-            anword.setVisible(true);
             this.dispose();
+            anword.setVisible(true);
         }
     }//GEN-LAST:event_btacceptActionPerformed
 
