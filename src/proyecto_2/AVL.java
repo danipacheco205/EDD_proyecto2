@@ -148,7 +148,7 @@ public class AVL
     private Nodoavl balancear(Nodoavl nodo) 
     {
         /**
-         * 
+         * Revisa el balance y las rotaciones necesarias para balancearlo
          */
         if (nodo == null) 
         {
@@ -187,6 +187,9 @@ public class AVL
     
     private Nodoavl rotarDerecha(Nodoavl y) 
     {
+        /**
+         * Rotación simple a la derecha
+         */
         Nodoavl x = y.getNodizq();
         Nodoavl z = x.getNoderc();
         
@@ -201,6 +204,9 @@ public class AVL
     
     private Nodoavl rotarIzquierda(Nodoavl x) 
     {
+        /**
+         * Rotación simple a la izquierda
+         */
         Nodoavl y = x.getNoderc();
         Nodoavl z = y.getNodizq();
         
@@ -215,11 +221,17 @@ public class AVL
     
     public boolean Balance() 
     {
+        /**
+         * Verifica si el arbol completo esta balanceado
+         */
         return estaBalanceado(this.raiz);
     }
     
     private boolean estaBalanceado(Nodoavl nodo) 
     {
+        /**
+         * Verifica si cada subarbol está balanceado
+         */
         if (nodo == null) 
         {
             return true;
@@ -231,6 +243,9 @@ public class AVL
     
     public String inorden(Nodoavl raiz, String resultado)
     {
+        /**
+         * Recorre el arbol en inorden, es decir en orden alfabético
+         */
         if (raiz != null)
         {
             resultado = inorden(raiz.getNodizq(), resultado); 
